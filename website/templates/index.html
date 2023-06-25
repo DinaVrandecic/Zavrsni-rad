@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Specifications</title>
+</head>
+<body>
+    <h1>Phone Specifications</h1>
+    <ul>
+        {% for phone in phones %}
+        <li>
+            <h2>{{ phone.brand }} </h2>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

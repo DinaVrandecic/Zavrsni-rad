@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+
+  --text-font: Verdana, Geneva, Tahoma, sans-serif;
+  --text-color: black;
+  --light-blue: rgb(28, 130, 173);
+  --aqua-green: rgb(0, 201, 136);
+}
+
+@media screen and (max-width: 510px) {
+}
+
+@media screen and (max-width: 700px) {
+  .table-conainer {
+    margin: 0;
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  margin: auto;
+}
+
+/* search area */
+
+/* headings */
+.top-page {
+  padding: 100px 0 300px 0;
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("../photos/6_asfasw112\ \(2\).jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#first-heading {
+  font-size: 45px;
+  font-family: var(--text-font);
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#second-heading {
+  font-family: var(--text-font);
+  font-size: large;
+
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+}
+
+.search-area {
+  display: flex;
+  justify-content: center;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+
+  margin-right: 3px;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+
+  background-color: white;
+  padding: 7px 5px;
+  border-radius: 15px;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+
+  font-size: medium;
+}
+
+/* table */
+
+.table-conainer {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+
+  margin: 40px 0;
+  font-family: var(--text-font);
+  font-size: medium;
+}
+
+.table-conainer table,
+th,
+td {
+  border: 2px solid;
+  border-color: var(--aqua-green);
+  border-collapse: collapse;
+  box-shadow: 1px 1px 8px var(--light-blue);
+  padding: 8px;
+  background-color: aliceblue;
+}
+
+.table-conainer thead {
+  text-align: center;
+}
+
+tbody tr :hover {
+  background-color: var(--light-blue);
+  cursor: pointer;
+}
+
+/* page */
+.page {
+  margin: 0 auto;
+}
+
+/* latest */
+.latest-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.picture-container {
+  width: 100%;
+  margin: 0 5px;
+  scale: 0.2;
+}
+
+.arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.arrow :hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition-timing-function: ease;
+  transition: transform 0.5s;
+}

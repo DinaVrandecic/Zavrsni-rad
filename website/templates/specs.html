@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpecSphere</title>
+    <script
+      src="https://kit.fontawesome.com/a3481ec9e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/header.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/footer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/specs.css')}}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-elements">
+        <h1 class="logo-container">
+          <strong><a href="/home">SpecSphere</a></strong>
+        </h1>
+        <div class="brands-conatiner">
+          <i class="fa-solid fa-list fa-lg"></i>
+          <span class="dropdown"
+            ><a href="/brands">BRANDS</a>
+            <div class="dropdown-content">
+              {% block content %} 
+                {% for brand in brands%}
+                  <a href="/brands/{{ brand.brand_slug }}">{{ brand.brand_name }}</a>
+                {% endfor%}
+              <hr />
+              <a href="/brands"
+                ><i class="fa-regular fa-square-plus"></i>more</a
+              >
+            </div>
+          </span>
+        </div>
+        <div class="search-area">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search..." />
+          </div>
+        </div>
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </header>
+    <main>
+      <div class="page">
+          <div class="title-container">{{ phone.phone_name }}</div>
+          <div class="main-info">
+            <div class="phone-picture">
+              <img src="{{ phone.thumbnail }}" alt="" />
+            </div>
+            <div class="main-features-container">
+              <div class="main-features-title">Main features</div>
+              <div class="main-features">
+                <div class="main-features-item">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>{{ phone.specifications[6].specs[0].val[0].split()[0] }} MP</span>
+                </div>
+                <div class="main-features-item">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>8GB RAM</span>
+                </div>
+                <div class="main-features-item heart">
+                  <i class="fa-regular fa-heart"></i>
+                  <span>546</span>
+                </div>
+                <div class="main-features-item">
+                  <i class="fa-solid fa-battery-full"></i>
+                  <span>{{ phone.specifications[11].specs[0].val[0].split()[1] }} mAh</span>
+                </div>
+                <div class="main-features-item">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <span>{{ phone.specifications[3].specs[1].val[0].split()[0] }}˝</span>
+                </div>
+                <div class="main-features-item">
+                  <i class="fa-solid fa-weight-hanging"></i>
+                  <span>{{ phone.specifications[2].specs[1].val[0].split()[0] }}g</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% for phone_specs in phone.specifications %}
+            <div class="specs-container">
+              <div class="specs">
+                <strong class="specs-title">{{ phone_specs.title }}</strong>
+                  <div class="specs-name">
+                    {% for item in phone_specs.specs %}
+                      <div>{{ item.key }}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="specs-data">
+                    {% for item in phone_specs.specs %}
+                      {% if item.val[0] == "" %}
+                        <div>None</div>
+                      {% else %}
+                        <div>{{ item.val[0] }}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endblock %}
+      </div>
+      <footer>
+        <span>Dina Vrandecic @FESB SpecSphere</span>
+      </footer>
+    </main>
+  </body>
+</html>

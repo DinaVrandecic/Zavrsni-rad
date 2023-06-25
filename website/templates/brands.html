@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpecSphere</title>
+    <script
+      src="https://kit.fontawesome.com/a3481ec9e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/header.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/footer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/brands.css')}}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-elements">
+        <h1 class="logo-container">
+          <strong><a href="/home">SpecSphere</a></strong>
+        </h1>
+        <div class="search-area">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search..." />
+          </div>
+        </div>
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </header>
+    <main>
+      <div class="page">
+        <div class="title-container">All Phone Brands</div>
+        <div class="grid-container">
+          {% block content %}
+            {% for phone in brands %}
+              <a href="/brands/{{ phone.slug }}" class="grid-element">{{ phone.name }}</a>
+            {% endfor %}
+          {% endblock %}
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>Dina Vrandecic @FESB SpecSphere</span>
+    </footer>
+  </body>
+</html>

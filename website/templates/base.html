@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpecSphere</title>
+    <script
+      src="https://kit.fontawesome.com/a3481ec9e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/base.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/header.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/footer.css')}}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-elements">
+        <h1 class="logo-container"><strong>SpecSphere</strong></h1>
+        <div class="brands-conatiner">
+          <i class="fa-solid fa-list fa-lg"></i>
+          <span class="dropdown">
+            <a href="/brands">BRANDS</a>
+            <div class="dropdown-content">
+              {% block content %} 
+                {% for brand in brands%}
+                  <a href="/brands/{{ brand.slug }}">{{ brand.name }}</a>
+                {% endfor%}
+              <hr />
+              <a href="/brands"
+                ><i class="fa-regular fa-square-plus"></i>more</a
+              >
+            </div>
+          </span>
+        </div>
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </header>
+    <main>
+      <div class="top-page">
+        <p id="first-heading">Find your phone</p>
+        <p id="second-heading">full phone specs graphically displayed</p>
+        <div class="search-area">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- <input type="text" class="search-input" placeholder="Search..." /> -->
+            <form method="POST" action="{{ url_for('views.display_top_phones')}}">
+              <input type="text" name="search" placeholder="Search phone">
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{ search_query }}
+      {{ search_results }}
+
+      <div class="page">
+        <div class="statistics-container">
+          <div class="table-conainer">
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>top by interest</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for index, phone in enumerate(top_by_interest) %}
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ phone.name }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>top by fans</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for index, phone in enumerate(top_by_fans) %}
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ phone.name }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>latest</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for index, phone in enumerate(latest) %}
+                <tr>
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ phone.name }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="latest-container">
+          <div class="arrow">
+            <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
+          </div>
+          {% for phone in pictures %}
+            <div class="picture-container">
+              <img src="{{ phone[0] }}" alt="" />
+            </div>
+          {% endfor %}
+        </div>
+        {% endblock %}
+      </div>
+      <footer>
+        <span>Dina Vrandecic @FESB SpecSphere</span>
+      </footer>
+    </main>
+  </body>
+</html>

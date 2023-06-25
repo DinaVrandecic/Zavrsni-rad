@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+
+  --text-font: Verdana, Geneva, Tahoma, sans-serif;
+  --text-color: white;
+  --light-blue: rgb(28, 130, 173);
+  --aqua-green: rgb(0, 201, 136);
+}
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  margin: auto;
+}
+
+.page {
+  margin: 70px auto 0 auto;
+}
+
+@media screen and (max-width: 780px) {
+  .search-area .search-box {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  header .header-elements {
+    margin: 0;
+  }
+}
+
+/* title */
+.title-container {
+  font-size: 45px;
+  font-family: var(--text-font);
+  font-weight: 600;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.phone-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* main info */
+.main-info {
+  display: flex;
+  justify-content: center;
+}
+
+.main-features-container {
+  padding-left: 10px;
+}
+
+.main-features-title {
+  font-family: var(--text-font);
+  font-size: larger;
+
+  color: black;
+}
+
+.main-features {
+  display: grid;
+  grid: auto / auto auto auto;
+}
+
+.main-features-item {
+  font-size: x-large;
+  padding: 40px 50px;
+  background-color: #fff;
+  border: 1px solid #e7e8e7;
+  /* box-sizing: border-box; */
+  min-width: max-content;
+}
+
+.heart:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+/* specifications */
+.specs-container {
+  background-color: #fff;
+  margin-top: 10px;
+  border: 1px solid #e7e8e7;
+}
+
+.specs {
+  display: flex;
+}
+.specs-title {
+  padding: 0 15px 0 5px;
+}
+
+.specs-name {
+  /* display: flex; */
+  /* flex-direction: column; */
+  padding-right: 15px;
+}
+
+.specs-name div {
+  padding-bottom: 5px;
+}
+
+/* .specs-data {
+  display: flex;
+  flex-direction: column;
+} */
+
+.specs-data div {
+  padding-bottom: 5px;
+}
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: center;
+
+  background-color: black;
+  color: var(--text-color);
+  font-size: medium;
+
+  padding: 10px 0;
+}
