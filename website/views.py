@@ -23,11 +23,8 @@ def get_top(base,endpoint):
         return top_phones
 
 
-def fetch_data():
+def create_main_db():
     brands = get_top(base, 'brands')
-    top_by_interest = get_top(base,'top-by-interest')['phones']
-    top_by_fans = get_top(base,'top-by-fans')['phones']
-    latest = get_top(base,'latest')['phones'][:10]
 
     for brand in brands:
         brand_name = brand['brand_name']
@@ -41,16 +38,32 @@ def fetch_data():
             name = phone['phone_name']
             phone_slug = phone['slug']
             image = phone['image']
-            # phone_data = get_top(base, phone_slug)
+            # phone_data = get_top(base, phone_slug)['specifications']
             # os = phone_data['os']
 
             existing_phone = Phones.query.filter_by(brand_name= brand_name, phone_name=name).first()
             if existing_phone == None:
                 new_phone = Phones(brand_name=brand_name, brand_slug= brand_slug, phone_name=name, phone_slug=phone_slug, image = image)
                 db.session.add(new_phone)
+    
+    db.session.commit()
+    return 'Data fetched successfully and stored in the database.'
 
-            
+# Ne radi jer ima previse zahtjeva oko 3100 a treba bit max 1000
+# def add_img():
+#     mobile = Phones.query.all()
+#     for mob in mobile:
+#         specifications = get_top(base, mob.phone_slug)
+#         os = specifications['os']
+#         mob.os = os
 
+#     db.session.commit()
+
+def fetch_data():
+    brands = get_top(base, 'brands')
+    top_by_interest = get_top(base,'top-by-interest')['phones']
+    top_by_fans = get_top(base,'top-by-fans')['phones']
+    latest = get_top(base,'latest')['phones'][:10]
     for brand in brands:
         brand_name = brand['brand_name']
         brand_slug = brand['brand_slug']
