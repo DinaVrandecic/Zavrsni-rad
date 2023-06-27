@@ -49,7 +49,7 @@ def create_main_db():
     db.session.commit()
     return 'Data fetched successfully and stored in the database.'
 
-# Ne radi jer ima previse zahtjeva oko 3100 a treba bit max 1000
+# Ne radi jer ima previse zahtjeva oko 3100 a treba bit max 1000git add
 # def add_img():
 #     mobile = Phones.query.all()
 #     for mob in mobile:
