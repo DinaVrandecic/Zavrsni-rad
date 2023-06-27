@@ -26,4 +26,6 @@ class Phones(db.Model):
     brand_slug= db.Column(db.String(100))
     phone_name = db.Column(db.String(100))
     phone_slug= db.Column(db.String(100))
+    image =db.Column(db.String(200))
+    # specs= db.Column(db.JSON)
     

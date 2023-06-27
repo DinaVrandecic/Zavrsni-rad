@@ -3,7 +3,7 @@ body {
   background-color: whitesmoke;
 
   --text-font: Verdana, Geneva, Tahoma, sans-serif;
-  --text-color: black;
+  --text-color: white;
   --light-blue: rgb(28, 130, 173);
   --aqua-green: rgb(0, 201, 136);
 }

@@ -40,12 +40,13 @@ def fetch_data():
         for phone in phones:
             name = phone['phone_name']
             phone_slug = phone['slug']
+            image = phone['image']
             # phone_data = get_top(base, phone_slug)
             # os = phone_data['os']
 
             existing_phone = Phones.query.filter_by(brand_name= brand_name, phone_name=name).first()
             if existing_phone == None:
-                new_phone = Phones(brand_name=brand_name, brand_slug= brand_slug, phone_name=name, phone_slug=phone_slug)
+                new_phone = Phones(brand_name=brand_name, brand_slug= brand_slug, phone_name=name, phone_slug=phone_slug, image = image)
                 db.session.add(new_phone)
 
             
@@ -105,8 +106,8 @@ def display_top_phones():
 
     if request.method == 'POST':
         search_query = request.form.get('search')
-        search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).first()
-        return render_template('base.html', search_results=search_results, search_query=search_query,brands=brands,top_by_interest=top_by_interest, top_by_fans=top_by_fans, latest=latest, enumerate=enumerate)
+        search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).all()
+        return render_template('index.html', search_results=search_results, search_query=search_query,brands=brands)
     
     return render_template('base.html',brands=brands,top_by_interest=top_by_interest, top_by_fans=top_by_fans, latest=latest, enumerate=enumerate)
 

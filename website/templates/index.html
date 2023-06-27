@@ -1,16 +1,107 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Phone Specifications</title>
-</head>
-<body>
-    <h1>Phone Specifications</h1>
-    <ul>
-        {% for phone in phones %}
-        <li>
-            <h2>{{ phone.brand }} </h2>
-        </li>
-        {% endfor %}
-    </ul>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpecSphere</title>
+    <script
+      src="https://kit.fontawesome.com/a3481ec9e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/header.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/footer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename = 'styles/phones.css')}}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-elements">
+        <h1 class="logo-container">
+          <strong><a href="/home">SpecSphere</a></strong>
+        </h1>
+        <div class="brands-conatiner">
+          <i class="fa-solid fa-list fa-lg"></i>
+          <span class="dropdown"
+            ><a href="../brands page/brands.html">BRANDS</a>
+            <div class="dropdown-content">
+              {% block content %} 
+                {% for brand in brands%}
+                  <a href="/brands/{{ brand.brand_slug }}">{{ brand.brand_name }}</a>
+                {% endfor%}
+              <hr />
+              <a href="/brands"
+                ><i class="fa-regular fa-square-plus"></i>more</a
+              >
+            </div>
+          </span>
+        </div>
+        <div class="search-area">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search..." />
+          </div>
+        </div>
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </header>
+    <main>
+      <div class="page">
+        <div class="title-container">{{ search_query }}</div>
+        <div class="grid-container">
+            {% for phone in search_results %} 
+            <a href="/{{ phone.phone_slug }}" class="grid-element">
+                <img src="{{phone.image}}" alt="" />
+                <div>{{ phone.phone_name }}</div>
+              </a>
+            {% endfor %}
+            {% endblock %}
+          <!-- <a href="/specs" class="grid-element">
+            <img src="./xiaomi-redmi-note10-pro.jpg" alt="" />
+            <div>Xiaomi redmi note 10 pro</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./oneplus-9-pro-.jpg" alt="" />
+            <div>Xiaomi redmi note 11 pro</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./samsung_galaxy_s23.jpg" alt="" />
+            <div>Xiaomi redmi note 12 pro</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./xiaomi-redmi-note10-pro.jpg" alt="" />
+            <div>Xiaomi redmi note 11 T</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./xiaomi-redmi-note10-pro.jpg" alt="" />
+            <div>Xiaomi poco 10</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./xiaomi-redmi-note10-pro.jpg" alt="" />
+            <div>Xiaomi 13 lite</div>
+          </a>
+          <a href="/specs" class="grid-element">
+            <img src="./xiaomi-redmi-note10-pro.jpg" alt="" />
+            <div>Xiaomi 12C</div> -->
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>Dina Vrandecic @FESB SpecSphere</span>
+    </footer>
+  </body>
 </html>
