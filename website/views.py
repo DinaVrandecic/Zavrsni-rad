@@ -24,10 +24,6 @@ def create_Phones():
         brand_name = brand['brand_name']
         brand_slug = brand['brand_slug']
         phones = get_top(base, 'brands/' + brand_slug)['phones']
-        # phones_url = f'http://phone-specs-api.vercel.app/brands/{brand_slug}'
-        # response = requests.get(phones_url)
-        # phones_data = response.json()
-        # phones = phones_data['data']['phones']
         for phone in phones:
             name = phone['phone_name']
             phone_slug = phone['slug']
@@ -127,14 +123,6 @@ def display_top_phones():
     
     return render_template('base.html',random_phones = random_phones, brands=brands,top_by_interest=top_by_interest, top_by_fans=top_by_fans, latest=latest, enumerate=enumerate)
 
-    # all_phones=Top_by_fans + Top_by_interest + Latest
-    # random_phones = random.sample(all_phones, 10)
-    # pictures=[]
-    # for i in random_phones:
-    #     pics =  get_top(i['detail'], '')['phone_images']
-    #     pictures.append(pics)
-   # return render_template('base.html',brands=brands,top_by_interest=top_by_interest, top_by_fans=top_by_fans, latest=latest, enumerate=enumerate)
-
 @views.route("/brands")
 def brands():
     brands = Brand.query.all()
@@ -142,23 +130,21 @@ def brands():
 
 @views.route("/brands/<brand_slug>")
 def phones(brand_slug):
-    brand_url = f'http://phone-specs-api.vercel.app/brands/{brand_slug}'
-    response = requests.get(brand_url)
-    data = response.json()
-    phones = data['data']['phones']
-    brand_name= data['data']['title']
-
+    phones = Phones.query.filter_by(brand_slug= brand_slug).all()
+    brand_name = Phones.query.filter_by(brand_slug= brand_slug).first()
     brands = Brand.query.order_by(db.func.random()).limit(10)
 
-    return render_template('phones.html',brand_name=brand_name, phones=phones ,brands=brands)
+    return render_template('phones.html',brand_name=brand_name.brand_name, phones=phones ,brands=brands)
 
 @views.route("/<phone_slug>")
 def specs( phone_slug):
-    brand_url = f'http://phone-specs-api.vercel.app/{phone_slug}'
-    response = requests.get(brand_url)
-    data = response.json()
-    specs = data['data']
+    # brand_url = f'http://phone-specs-api.vercel.app/{phone_slug}'
+    # response = requests.get(brand_url)
+    # data = response.json()
+    # specs = data['data']
 
-    brands=get_top(base, '/brands')
+    specs = get_top(base, phone_slug)
+
+    brands=get_top(base, 'brands')
     brands = random.sample(brands, 5)
     return render_template("specs.html", phone=specs,brands=brands)

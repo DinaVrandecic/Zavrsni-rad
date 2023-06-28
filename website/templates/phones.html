@@ -63,7 +63,7 @@
         <div class="title-container">{{ brand_name }}</div>
         <div class="grid-container">
             {% for phone in phones %}
-              <a href="/{{ phone.slug }}" class="grid-element">
+              <a href="/{{ phone.phone_slug }}" class="grid-element">
                 <img src="{{phone.image}}" alt="" />
                 <div>{{ phone.phone_name }}</div>
               </a>
