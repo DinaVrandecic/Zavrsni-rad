@@ -11,7 +11,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:Buterica12@localhost/{DB_NAME}'
     db.init_app(app)
 
-    from .views import views, fetch_data, create_main_db, add_img
+    from .views import views, fetch_data, create_Phones
 
     app.register_blueprint(views, url_prefix='/')
 
@@ -19,7 +19,7 @@ def create_app():
 
     with app.app_context():
         db.create_all()
-        add_img()
+        fetch_data()
 
     return app
 

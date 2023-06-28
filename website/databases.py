@@ -27,6 +27,5 @@ class Phones(db.Model):
     phone_name = db.Column(db.String(100))
     phone_slug= db.Column(db.String(100))
     image =db.Column(db.String(200))
-    os =db.Column(db.String(200))
 
     

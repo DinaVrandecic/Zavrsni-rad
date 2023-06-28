@@ -121,9 +121,9 @@
           <div class="arrow">
             <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
           </div>
-          {% for phone in pictures %}
+          {% for phone in random_phones %}
             <div class="picture-container">
-              <img src="{{ phone[0] }}" alt="" />
+              <img src="{{ phone.image }}" alt="" />
             </div>
           {% endfor %}
         </div>
