@@ -39,9 +39,9 @@
             ><a href="/brands">BRANDS</a>
             <div class="dropdown-content">
               {% block content %} 
-                {% for brand in brands%}
-                  <a href="/brands/{{ brand.brand_slug }}">{{ brand.brand_name }}</a>
-                {% endfor%}
+              {% for brand in brands%}
+              <a href="/brands/{{ brand.slug }}">{{ brand.name }}</a>
+              {% endfor%}
               <hr />
               <a href="/brands"
                 ><i class="fa-regular fa-square-plus"></i>more</a

@@ -40,7 +40,7 @@
             <div class="dropdown-content">
               {% block content %} 
                 {% for brand in brands%}
-                  <a href="/brands/{{ brand.brand_slug }}">{{ brand.brand_name }}</a>
+                  <a href="/brands/{{ brand.slug }}">{{ brand.name }}</a>
                 {% endfor%}
               <hr />
               <a href="/brands"
@@ -60,7 +60,7 @@
     </header>
     <main>
       <div class="page">
-        <div class="title-container">{{ brand_name }}</div>
+        <div class="title-container">{{ brand_name.brand_name }}</div>
         <div class="grid-container">
             {% for phone in phones %}
               <a href="/{{ phone.phone_slug }}" class="grid-element">

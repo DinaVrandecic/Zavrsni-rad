@@ -78,7 +78,7 @@
                 {% for index, phone in enumerate(top_by_interest) %}
                 <tr>
                     <td>{{ index + 1 }}</td>
-                    <td>{{ phone.name }}</td>
+                    <td><a href="/{{ phone.slug }}">{{ phone.name }}</a></td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -94,7 +94,7 @@
                 {% for index, phone in enumerate(top_by_fans) %}
                 <tr>
                     <td>{{ index + 1 }}</td>
-                    <td>{{ phone.name }}</td>
+                    <td><a href="/{{ phone.slug }}">{{ phone.name }}</a></td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -110,7 +110,7 @@
                 {% for index, phone in enumerate(latest) %}
                 <tr>
                     <td>{{ index + 1 }}</td>
-                    <td>{{ phone.name }}</td>
+                    <td><a href="/{{ phone.slug }}">{{ phone.name }}</a></td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -124,6 +124,7 @@
           {% for phone in random_phones %}
             <div class="picture-container">
               <img src="{{ phone.image }}" alt="" />
+              <a href="/{{ phone.phone_slug}}">{{ phone.phone_name }}</a>
             </div>
           {% endfor %}
         </div>

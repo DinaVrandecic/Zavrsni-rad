@@ -134,17 +134,11 @@ def phones(brand_slug):
     brand_name = Phones.query.filter_by(brand_slug= brand_slug).first()
     brands = Brand.query.order_by(db.func.random()).limit(10)
 
-    return render_template('phones.html',brand_name=brand_name.brand_name, phones=phones ,brands=brands)
+    return render_template('phones.html',brand_name=brand_name, phones=phones ,brands=brands)
 
 @views.route("/<phone_slug>")
 def specs( phone_slug):
-    # brand_url = f'http://phone-specs-api.vercel.app/{phone_slug}'
-    # response = requests.get(brand_url)
-    # data = response.json()
-    # specs = data['data']
-
+    brands = Brand.query.order_by(db.func.random()).limit(10)
     specs = get_top(base, phone_slug)
 
-    brands=get_top(base, 'brands')
-    brands = random.sample(brands, 5)
     return render_template("specs.html", phone=specs,brands=brands)

@@ -104,13 +104,17 @@ main {
 
 .table-conainer table,
 th,
-td {
+td{
   border: 2px solid;
   border-color: var(--aqua-green);
   border-collapse: collapse;
   box-shadow: 1px 1px 8px var(--light-blue);
   padding: 8px;
   background-color: aliceblue;
+}
+
+.table-conainer a{
+  color: black;
 }
 
 .table-conainer thead {
@@ -137,6 +141,11 @@ tbody tr :hover {
   width: 100%;
   margin: 0 5px;
   scale: 0.2;
+
+}
+
+.picture-container a{
+  color: black;
 }
 
 .arrow {
