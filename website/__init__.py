@@ -20,6 +20,7 @@ def create_app():
     with app.app_context():
         db.create_all()
         fetch_data()
+        # create_phones() se učitava samo jednom
 
     return app
 
