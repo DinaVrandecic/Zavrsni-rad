@@ -1,10 +1,12 @@
 footer {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 
   background-color: black;
   color: var(--text-color);
   font-size: medium;
-
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   padding: 10px 0;
 }

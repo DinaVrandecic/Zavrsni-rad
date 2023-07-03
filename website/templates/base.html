@@ -30,7 +30,7 @@
     <header>
       <div class="header-elements">
         <h1 class="logo-container"><strong>SpecSphere</strong></h1>
-        <div class="brands-conatiner">
+        <div class="main-page-brands">
           <i class="fa-solid fa-list fa-lg"></i>
           <span class="dropdown">
             <a href="/brands">BRANDS</a>
@@ -46,20 +46,17 @@
             </div>
           </span>
         </div>
-        <i class="fa-solid fa-user"></i>
       </div>
     </header>
     <main>
       <div class="top-page">
         <p id="first-heading">Find your phone</p>
-        <p id="second-heading">full phone specs graphically displayed</p>
         <div class="search-area">
           <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <!-- <input type="text" class="search-input" placeholder="Search..." /> -->
             <form method="POST" action="{{ url_for('views.display_top_phones')}}">
-              <input type="text" name="search" placeholder="Search phone">
-              <button type="submit">Search</button>
+              <input type="text" name="search" placeholder="Search phone..." class="search-input">
+              <button type="submit"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
             </form>
           </div>
         </div>
@@ -71,7 +68,7 @@
               <thead>
                 <tr>
                   <td></td>
-                  <td>top by interest</td>
+                  <td>TOP BY INTEREST</td>
                 </tr>
               </thead>
               <tbody>
@@ -87,7 +84,7 @@
               <thead>
                 <tr>
                   <td></td>
-                  <td>top by fans</td>
+                  <td>TOP BY FANS</td>
                 </tr>
               </thead>
               <tbody>
@@ -103,7 +100,7 @@
               <thead>
                 <tr>
                   <td></td>
-                  <td>latest</td>
+                  <td>LATEST</td>
                 </tr>
               </thead>
               <tbody>
@@ -117,7 +114,7 @@
             </table>
           </div>
         </div>
-        <div class="latest-container">
+        <!-- <div class="latest-container">
           <div class="arrow">
             <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
           </div>
@@ -127,7 +124,7 @@
               <a href="/{{ phone.phone_slug}}">{{ phone.phone_name }}</a>
             </div>
           {% endfor %}
-        </div>
+        </div> -->
         {% endblock %}
       </div>
       <footer>

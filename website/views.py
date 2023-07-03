@@ -126,6 +126,12 @@ def display_top_phones():
 @views.route("/brands")
 def brands():
     brands = Brand.query.all()
+
+    if request.method == 'POST':
+        search_query = request.form.get('search')
+        search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).all()
+        return render_template('index.html', search_results=search_results, search_query=search_query,brands=brands)
+    
     return render_template("brands.html", brands=brands)
 
 @views.route("/brands/<brand_slug>")

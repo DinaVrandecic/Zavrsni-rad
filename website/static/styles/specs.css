@@ -17,7 +17,7 @@ main {
 }
 
 .page {
-  margin: 70px auto 0 auto;
+  margin: 70px auto 40px auto;
 }
 
 @media screen and (max-width: 780px) {
@@ -118,16 +118,4 @@ main {
 
 .specs-data div {
   padding-bottom: 5px;
-}
-
-/* footer */
-footer {
-  display: flex;
-  justify-content: center;
-
-  background-color: black;
-  color: var(--text-color);
-  font-size: medium;
-
-  padding: 10px 0;
 }

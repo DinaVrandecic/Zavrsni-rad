@@ -31,12 +31,14 @@ main {
 /* headings */
 .top-page {
   padding: 100px 0 300px 0;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
 
   background-image: url("../photos/6_asfasw112\ \(2\).jpg");
   background-size: cover;
   background-position: center;
+  box-shadow: 5px 5px 20px 5px #4fb073;
 }
 
 #first-heading {
@@ -45,7 +47,7 @@ main {
   font-weight: 600;
   color: var(--text-color);
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 
   display: flex;
   justify-content: center;
@@ -60,35 +62,8 @@ main {
   justify-content: center;
 }
 
-.search-area {
-  display: flex;
-  justify-content: center;
-}
 
-.search-icon {
-  display: flex;
-  align-items: center;
 
-  margin-right: 3px;
-}
-
-.search-box {
-  display: flex;
-  justify-content: center;
-  width: 400px;
-
-  background-color: white;
-  padding: 7px 5px;
-  border-radius: 15px;
-}
-
-.search-input {
-  width: 100%;
-  border: none;
-  outline: none;
-
-  font-size: medium;
-}
 
 /* table */
 
@@ -106,9 +81,9 @@ main {
 th,
 td{
   border: 2px solid;
-  border-color: var(--aqua-green);
+  border-color: #92cf65;
   border-collapse: collapse;
-  box-shadow: 1px 1px 8px var(--light-blue);
+  box-shadow: 1px 1px 8px #2b9f78;
   padding: 8px;
   background-color: aliceblue;
 }
@@ -128,7 +103,7 @@ tbody tr :hover {
 
 /* page */
 .page {
-  margin: 0 auto;
+  margin: 40px auto 50px auto;
 }
 
 /* latest */

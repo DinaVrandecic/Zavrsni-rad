@@ -51,11 +51,12 @@
         </div>
         <div class="search-area">
           <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search..." />
+            <form method="POST" action="{{ url_for('views.display_top_phones')}}">
+              <input type="text" name="search" placeholder="Search phone..." class="search-input">
+              <button type="submit"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+            </form>
           </div>
         </div>
-        <i class="fa-solid fa-user"></i>
       </div>
     </header>
     <main>

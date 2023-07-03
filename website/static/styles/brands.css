@@ -16,7 +16,7 @@ main {
   margin: auto;
 }
 .page {
-  margin: 70px auto 0 auto;
+  margin: 70px auto 40px auto;
 }
 
 /* header */
@@ -53,7 +53,6 @@ main {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-color: white;
 }
 
 .grid-element {
@@ -63,6 +62,9 @@ main {
   cursor: pointer;
   color: black;
   text-decoration: none;
+  margin: 5px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 700px) {
@@ -77,14 +79,3 @@ main {
   }
 }
 
-/* footer */
-footer {
-  display: flex;
-  justify-content: center;
-
-  background-color: black;
-  color: var(--text-color);
-  font-size: medium;
-
-  padding: 10px 0;
-}

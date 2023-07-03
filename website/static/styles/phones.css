@@ -32,7 +32,7 @@ main {
   margin: auto;
 }
 .page {
-  margin: 70px auto 0 auto;
+  margin: 70px auto 40px auto;
 }
 
 /* title */
@@ -52,18 +52,19 @@ main {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-color: white;
 }
 
 .grid-element {
   padding: 30px;
   text-align: center;
-  font-size: large;
+  font-size: x-large;
   cursor: pointer;
-  text-decoration: none;
   color: black;
+  text-decoration: none;
+  margin: 5px;
+  background-color: white;
+  border-radius: 5px;
 }
-
 .grid-element img {
   width: 100%;
   min-width: 100px;
@@ -83,14 +84,4 @@ main {
   }
 }
 
-/* footer */
-footer {
-  display: flex;
-  justify-content: center;
 
-  background-color: black;
-  color: var(--text-color);
-  font-size: medium;
-
-  padding: 10px 0;
-}
