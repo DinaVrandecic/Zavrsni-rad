@@ -1,23 +1,19 @@
 from . import db 
 
 class Brand(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100), primary_key=True)
     slug= db.Column(db.String(100), unique=True)
 
 class Top_by_interest(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100), primary_key=True)
     slug= db.Column(db.String(100), unique=True)
 
 class Top_by_fans(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100), primary_key=True)
     slug= db.Column(db.String(100), unique=True)
     
 class Latest(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100), primary_key=True)
     slug= db.Column(db.String(100), unique=True)
 
 class Phones(db.Model):

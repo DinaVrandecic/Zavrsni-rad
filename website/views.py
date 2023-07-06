@@ -1,10 +1,10 @@
 from flask import Blueprint
-from flask import render_template, url_for, redirect, request,jsonify
-from .databases import Brand, Top_by_interest, Top_by_fans, Latest, Phones
-from sqlalchemy import func
 from . import db
+from .databases import Brand, Top_by_interest, Top_by_fans, Latest, Phones
+from flask import render_template, url_for, redirect, request,jsonify
 import requests
 import random
+from sqlalchemy import func
 
 views = Blueprint('views', __name__)
 
@@ -19,6 +19,15 @@ def get_top(base,endpoint):
 
 def create_Phones():
     brands = get_top(base, 'brands')
+
+    for brand in brands:
+        brand_name = brand['brand_name']
+        brand_slug = brand['brand_slug']
+
+        existing_phone = Brand.query.filter_by(name=brand_name).first()
+        if existing_phone == None:
+            new_phone = Brand(name=brand_name, slug=brand_slug)
+            db.session.add(new_phone)
 
     for brand in brands:
         brand_name = brand['brand_name']
@@ -48,20 +57,9 @@ def create_Phones():
 #     db.session.commit()
 
 def fetch_data():
-    brands = get_top(base, 'brands')
     top_by_interest = get_top(base,'top-by-interest')['phones']
     top_by_fans = get_top(base,'top-by-fans')['phones']
     latest = get_top(base,'latest')['phones'][:10]
-
-
-    for brand in brands:
-        brand_name = brand['brand_name']
-        brand_slug = brand['brand_slug']
-
-        existing_phone = Brand.query.filter_by(name=brand_name).first()
-        if existing_phone == None:
-            new_phone = Brand(name=brand_name, slug=brand_slug)
-            db.session.add(new_phone)
 
     db.session.query(Top_by_interest).delete()
     for phone in top_by_interest:
@@ -126,12 +124,10 @@ def display_top_phones():
 @views.route("/brands")
 def brands():
     brands = Brand.query.all()
-
     if request.method == 'POST':
         search_query = request.form.get('search')
         search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).all()
         return render_template('index.html', search_results=search_results, search_query=search_query,brands=brands)
-    
     return render_template("brands.html", brands=brands)
 
 @views.route("/brands/<brand_slug>")
