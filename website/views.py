@@ -87,7 +87,7 @@ def fetch_data():
         phone_slug = phone['slug']
         image = phone['image']
 
-        existing_phone = Latest.query.filter_by(name=phone_name).first()
+        existing_phone = Latest.query.filter_by(name=full_phone_name).first()
         if existing_phone == None:
             new_phone = Latest(name=full_phone_name, slug=phone_slug)
             db.session.add(new_phone)
@@ -119,15 +119,12 @@ def display_top_phones():
         search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).all()
         return render_template('index.html', search_results=search_results, search_query=search_query,brands=brands)
     
-    return render_template('base.html',random_phones = random_phones, brands=brands,top_by_interest=top_by_interest, top_by_fans=top_by_fans, latest=latest, enumerate=enumerate)
+    return render_template('base.html',random_phones = random_phones,brands=brands,top_by_interest=top_by_interest,
+                           top_by_fans=top_by_fans,latest=latest,enumerate=enumerate)
 
 @views.route("/brands")
 def brands():
     brands = Brand.query.all()
-    if request.method == 'POST':
-        search_query = request.form.get('search')
-        search_results = Phones.query.filter(Phones.phone_name.like(f'%{search_query}%')).all()
-        return render_template('index.html', search_results=search_results, search_query=search_query,brands=brands)
     return render_template("brands.html", brands=brands)
 
 @views.route("/brands/<brand_slug>")
